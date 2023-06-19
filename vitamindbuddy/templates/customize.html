@@ -1,0 +1,170 @@
+{% extends "base.html" %}
+
+{% block style %}
+<link rel="stylesheet" href="/static/style/customize.css">
+{% endblock %}
+
+{% block script %}
+<script src='/static/js/jquery.min.js'></script>
+<script src="/static/js/customize.js"></script>
+{% endblock %}
+
+{% block content %}
+<div id="customize-page">
+    <h1 class="title">Create your Bud-D</h1>
+    <article id="customize-puffle">
+        <div id="customize-left">
+            <div id="puffle-preview">
+                <!-- <div id="puffle-eyes"><img src=""></div> -->
+                <img id="puffle-body" src="/static/src/puffle/purple_puffle.png" alt="purple puffle">
+                <img id="puffle-eyes" src="/static/src/puffle/puffle_eyes.png" alt="puffle eyes">
+                <img id="puffle-hat" src="" alt="puffle hat accessory">
+                <img id="puffle-glasses" src="" alt="puffle glasses accessory">
+            </div>
+            <h2 class="title" id="bud-name">{{ buddyName }}</h2>
+            <nav class="title" onclick="showDivBlock('edit-name-view')" id="edit-name-btn" value="edit-name-view">EDIT NAME</nav>
+        </div>
+        <div id="customize-right">
+            <nav id="customize-tabs">
+                <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                    <button onclick="showTab(this.id)" class="nav-link active" id="nav-body-color-tab">Body Color</button>
+                    <button onclick="showTab(this.id)" class="nav-link" id="nav-accessories-tab">Accessories</button>
+                    <!-- <button onclick="showTab(this.id)" class="nav-link" id="nav-eye-color-tab">Eye Color</button> -->
+                    <button class="nav-link" id="nav-eye-color-tab">Coming soon!</button>
+                </div>
+            </nav>
+            <!-- TODO: make this render dynamically -->
+            <div id="customize-tabs-tab-content">
+                <div id="body-color-grid" class="color-grid">
+                    <div class="color-option" onclick="updatePuffleBody(this.title)" id="body-color-red" title="red">
+                        <div class="color-square red-square"></div>
+                        <div class="color-label">Red</div>
+                    </div>
+                    <div class="color-option" onclick="updatePuffleBody(this.title)" id="body-color-orange" title="orange">
+                        <div class="color-square orange-square"></div>
+                        <div class="color-label">Orange</div>
+                    </div>
+                    <div class="color-option" onclick="updatePuffleBody(this.title)" id="body-color-yellow" title="yellow">
+                        <div class="color-square yellow-square"></div>
+                        <div class="color-label">Yellow</div>
+                    </div>
+                    <div class="color-option" onclick="updatePuffleBody(this.title)" id="body-color-green" title="green">
+                        <div class="color-square green-square"></div>
+                        <div class="color-label">Green</div>
+                    </div>
+                    <div class="color-option" onclick="updatePuffleBody(this.title)" id="body-color-blue" title="blue">
+                        <div class="color-square blue-square"></div>
+                        <div class="color-label">Blue</div>
+                    </div>
+                    <div class="color-option option-picked" onclick="updatePuffleBody(this.title)" id="body-color-purple" title="purple">
+                        <div class="color-square purple-square"></div>
+                        <div class="color-label">Purple</div>
+                    </div>
+                    <div class="color-option" onclick="updatePuffleBody(this.title)" id="body-color-pink" title="pink">
+                        <div class="color-square pink-square"></div>
+                        <div class="color-label">Pink</div>
+                    </div>
+                    <div class="color-option" onclick="updatePuffleBody(this.title)" id="body-color-brown" title="brown">
+                        <div class="color-square brown-square"></div>
+                        <div class="color-label">Brown</div>
+                    </div>
+                    <div class="color-option" onclick="updatePuffleBody(this.title)" id="body-color-black" title="black">
+                        <div class="color-square black-square"></div>
+                        <div class="color-label">Black</div>
+                    </div>
+                    <div class="color-option" onclick="updatePuffleBody(this.title)" id="body-color-white" title="white">
+                        <div class="color-square white-square"></div>
+                        <div class="color-label">White</div>
+                    </div>
+                </div>
+                <div id="eye-color-grid" class="color-grid">
+                    <div class="color-option">
+                        <div class="color-square red-square"></div>
+                        <p class="color-label">Red</p>
+                    </div>
+                    <div id="eye-color-orange">
+                        <div class="color-square orange-square"></div>
+                        <p class="color-label">Orange</p>
+                    </div>
+                    <div id="eye-color-grn">
+                        <div class="color-square green-square"></div>
+                        <p class="color-label">Green</p>
+                    </div>
+                    <div id="eye-color-blue">
+                        <div class="color-square blue-square"></div>
+                        <p class="color-label">Blue</p>
+                    </div>
+                    <div id="eye-color-purp">
+                        <div class="color-square purple-square"></div>
+                        <p class="color-label">Purple</p>
+                    </div>
+                    <div id="eye-color-pink">
+                        <div class="color-square pink-square"></div>
+                        <p class="color-label">Pink</p>
+                    </div>
+                    <div id="eye-color-brwn">
+                        <div class="color-square brown-square"></div>
+                        <p class="color-label">Brown</p>
+                    </div>
+                    <div id="eye-color-blck">
+                        <div class="color-square black-square"></div>
+                        <p id="black-label">Black</p>
+                    </div>
+                </div>
+                <div id="accessories-grid" class="color-grid">
+                    <div onclick="hideGlasses()" class="accessory-option option-picked" id="no_glasses" title="no_glasses">No glasses</div>
+                    <div onclick="updatePuffleGlasses(this.title)" class="accessory-option" id="3d_glasses" title="3d_glasses">
+                        <img src="/static/src/accessories/accessory_preview/3d_glasses_preview.png" alt="3d glasses" class="color-square">
+                    </div>
+                    <div onclick="updatePuffleGlasses(this.title)" class="accessory-option" id="red_heart_sunglasses" title="red_heart_sunglasses">
+                        <img src="/static/src/accessories/accessory_preview/red_heart_sunglasses_preview.png" alt="red heart sunglasses" class="color-square">
+                    </div>
+                    <div onclick="hideHat()" class="accessory-option option-picked" id="no_hat" title="no_hat">No hat</div>
+                    <div onclick="updatePuffleHat(this.title)" class="accessory-option" id="cowboy_hat" title="cowboy_hat">
+                        <img src="/static/src/accessories/accessory_preview/cowboy_hat_preview.png" alt="red heart sunglasses" class="color-square">
+                    </div>
+                    <div onclick="updatePuffleHat(this.title)" class="accessory-option" id="santa_hat" title="santa_hat">
+                        <img src="/static/src/accessories/accessory_preview/santa_hat_preview.png" alt="red heart sunglasses" class="color-square">
+                    </div>
+                </div>
+            </div>
+            <form action="/customize/" method="post" enctype="multipart/form-data">
+                <input type="hidden" name="buddyName" id="form-name-input" value="Buddy" />
+                <input type="hidden" name="bodyColor" id="color-input" value="purple_puffle.png" />
+                <input type="hidden" name="glasses" id="glasses-input" value="" />
+                <input type="hidden" name="hat" id="hat-input" value="" />
+                <input type="submit" name="submit" class="blue-button" id="customize-play-btn" value="Let's play!"/>
+            </form>
+            <!-- <a onclick="postPuffle()" class="blue-button" id="customize-play-btn">Let's play!</a> -->
+            <!-- <a href="/game/" class="blue-button" id="customize-play-btn">Let's play!</a> -->
+        </div>
+        <div class="background" id="edit-name-view">
+            <div id="edit-name-window">
+                <button onclick="hideDiv('edit-name-view')" id="name-close">X</button>
+                <h5 class="title">Edit Buddy's Name</h5>
+                <input type="text" id="name-input" name="name" placeholder="Enter your buddy's name here"/>
+                <button onclick="editName()" class="blue-button" id="name-submit" input type="submit">Confirm</button>
+                <!-- <form onsubmit="(e) => editName(e)">
+                    <input type="text" id="name-input" name="name" placeholder="Enter your buddy's name here"/>
+                    <input type="hidden"  name="operation" value="buddyName"/>
+                    <input class="blue-button" id="name-submit" type="submit" value="Confirm"/>
+                </form> -->
+            </div>
+        </div>
+    </article>
+</div>
+
+{% endblock %}
+
+<!--
+
+    - pirate hat
+    - baseball hat
+    - top hat
+    - sombrero
+
+    - pirate eyepatch
+    - monocle
+    - shutter shades
+    - 
+ -->

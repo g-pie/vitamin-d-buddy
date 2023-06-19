@@ -1,0 +1,69 @@
+#!/bin/bash
+# Database for Vitamin-D Bud-D
+
+# Stop on errors
+# https://vaneyckt.io/posts/safer_bash_scripts_with_set_euxo_pipefail/
+set -Eueo pipefail
+set -x 
+
+# Sanity check cammand line options
+usage() {
+  echo "Usage: $0 (create|destroy|reset|dump|players|puffles|playersTasks)"
+}
+
+makedb() {
+  sqlite3 var/vitdbud.sqlite3 < sql/schema.sql
+  sqlite3 var/vitdbud.sqlite3 < sql/data.sql
+}
+
+if [ $# -ne 1 ]; then
+  usage
+  exit 1
+fi
+
+# Check argument
+case $1 in
+  "create")
+    # check if db already created
+    if [[ -f var/vitdbud.sqlite3 ]]
+    then
+      echo "Error: database already exists"
+    else
+      makedb
+    fi
+    ;;
+
+  "destroy")
+    rm -rf var/vitdbud.sqlite3
+    ;;
+  
+  "reset")
+    rm -rf var/vitdbud.sqlite3
+    makedb
+    ;;
+
+  "puffles")
+    sqlite3 -batch -line var/vitdbud.sqlite3 'SELECT * FROM puffles'
+    ;;
+
+  "players")
+    sqlite3 -batch -line var/vitdbud.sqlite3 'SELECT * FROM players'
+    ;;
+
+  "playersTasks")
+    sqlite3 -batch -line var/vitdbud.sqlite3 'SELECT * FROM playersTasks'
+    ;;
+
+  "dump")
+    sqlite3 -batch -line var/vitdbud.sqlite3 'SELECT * FROM players'
+    sqlite3 -batch -line var/vitdbud.sqlite3 'SELECT * FROM puffles'
+    sqlite3 -batch -line var/vitdbud.sqlite3 'SELECT * FROM tasks'
+    sqlite3 -batch -line var/vitdbud.sqlite3 'SELECT * FROM playersTasks'
+    sqlite3 -batch -line var/vitdbud.sqlite3 'SELECT * FROM leaderboard'
+    ;;
+  
+  *)
+    usage
+    exit 1
+    ;;
+esac

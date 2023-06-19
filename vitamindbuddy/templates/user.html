@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+{% block content %}
+<main class="profile-page">
+	<div class="user-info">
+		<p id="username">{{ username }}</p>
+	{% if yourself %}
+		<p><strong>Edit profile</strong></p>
+		<form action="/accounts/logout/" method="post" enctype="multipart/form-data">
+			<input type="submit" name="logout" value="Logout"/>
+		</form>
+		<ul>
+			<li>{{ total_posts }} post{{ "s" if total_posts != 1 }}</li>
+			<li><a href="/users/{{ username }}/followers/"><strong>{{ followers }} follower{{ "s" if followers != 1 }}</strong></a></li>
+			<li><a href="/users/{{ username }}/following/"><strong>{{ following }} following</strong></a></li>
+		</ul>
+		<p>{{ fullname }}</p>
+
+		<form action="{{ url_for('user', user_url_slug=logname) }}" method="post" enctype="multipart/form-data">
+			<input type="file" name="file" accept="{{ allowed_extensions }}" required/>
+			<input type="submit" name="create_post" value="upload new post"/>
+			<input type="hidden" name="operation" value="create"/>
+		</form>
+	
+	{% else %}
+		{% if logname_follows_username %}
+		<p><strong>Following</strong></p>
+		{% elif logname != username and not logname_follows_username %}
+		<p><strong>Not following</strong></p>
+		{% endif %}
+		<ul>
+			<li>{{ total_posts }} post{{ "s" if total_posts != 1 }}</li>
+			<li>
+				<a href="/users/{{ username }}/followers/"><strong>{{ followers }} follower{{ "s" if followers != 1 }}</strong></a>
+			</li>
+			<li>
+				<a href="/users/{{ username }}/following/"><strong>{{ following }} following</strong></a>
+			</li>
+		</ul>
+		<p>{{ fullname }}</p>
+	{% endif %}
+	</div>
+	{% if total_posts > 0 %}
+    "tasks": [
+        [
+            "name":
+            "value":
+            "status": 
+            2 => active
+            1 => saved
+            0 => suggested
+        ]
+
+    ]
+	<div class="photos">
+		{% for task in tasks %}
+        <p>{{ task.name }}</p>
+        <p>{{ task.value }}</p>
+
+        {% if task.status == 2 %}
+        <p>Active Status</p>
+        
+		<a href="/posts/{{ post.postid }}/">
+			<img src="{{ post.img_url }}" alt="user post">
+		</a>
+		{% endfor %}
+	</div>
+	{% endif %}
+</main>
+{% endblock %}

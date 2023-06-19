@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block style %}
+<link rel="stylesheet" href="/static/style/style.css">
+{% endblock %}
+
+{% block content %}
+
+<div id="login-page">
+    <div class="account-left">
+        <div class="title">
+            <div>Vitamin-<span class="title-outline">D</span></div>
+            <div>Bud-<span class="title-outline">D</span></div>
+        </div>
+        <img class="orange-puffle-account" src="/static/src/puffle_logo.png" alt="orange puffle"/>
+    </div>
+    <div class="account-right">
+        <span class="account-title">Login</span>
+        <form action="{{ form_url }}" method="post" enctype="multipart/form-data">
+            <div class="account-inputs">
+                <input class="account-input" type="text" name="username" placeholder="Username" required/>
+                <input class="account-input" type="password" name="password" placeholder="Password" required/>
+                <input type="hidden" name="operation" value="login"/>
+            </div>
+            <div class="account-btns">
+                <input class="home-button" type="submit" value="Login"/>
+                <a href="/" class="account-back-btn">Go back</a>
+            </div>
+        </form>
+        <!-- <div class="account-inputs"> 
+            <input class="account-input" type="text" id="email-or-username-input" name="username" placeholder="email/username">
+            <input class="account-input" type="text" id="password-input-login" name="password" placeholder="password">
+        </div> -->
+        <!-- <div class="account-btns">
+            <a href="/tutorial/" class="account-next-btn home-button">Login</a>
+            <a href="/" class="account-back-btn">Go back</a>
+        </div> -->
+    </div>
+</div>
+
+{% endblock %}

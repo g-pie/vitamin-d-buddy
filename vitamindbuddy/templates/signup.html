@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+
+{% block style %}
+<link rel="stylesheet" href="/static/style/style.css">
+{% endblock %}
+
+{% block content %}
+
+<div id="create-account-page">
+    <div class="account-left">
+        <div class="title">
+            <div>Vitamin-<span class="title-outline">D</span></div>
+            <div>Bud-<span class="title-outline">D</span></div>
+        </div>
+        <img class="orange-puffle-account" src="/static/src/puffle_logo.png" alt="orange puffle"/>
+    </div>
+    <div class="account-right">
+        <span class="account-title">Create Account</span>
+        <form action="{{ form_url }}" method="post" enctype="multipart/form-data">
+            <div class="account-inputs">
+                <input class="account-input" type="text" id="email-input" name="email" placeholder="Email"> 
+                <input class="account-input" type="text" id="username-input" name="username" placeholder="Username">
+                <input class="account-input" type="password" id="password-input" name="password" placeholder="Password">
+                <input class="account-input" type="password" id="confirm-password-input" name="confirm-password" placeholder="Confirm Password">
+                <input type="hidden" name="operation" value="signup"/>
+            </div>
+            <div class="account-btns">
+                <input class="account-next-btn home-button" type="submit" value="Create Account"/>
+                <!-- <a href="/tutorial" class="account-next-btn home-button">Create Account</a> -->
+                <a href="/" class="account-back-btn">Go back</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+{% endblock %}
+
+<article>
+    <input type="radio" name="switch-pos" id="pos-0">
+    <input type="radio" name="switch-pos" id="pos-1">
+    <input type="radio" name="switch-pos" id="pos-2" checked>
+    <input type="radio" name="switch-pos" id="pos-3">
+    <div class="chart">
+        <div class="bar bar-30 white">
+            <div class="face top">
+                <div class="growing-bar"></div>
+            </div>
+            <div class="face side-0">
+                <div class="growing-bar"></div>
+            </div>
+            <div class="face floor">
+                <div class="growing-bar"></div>
+            </div>
+            <div class="face side-a"></div>
+            <div class="face side-b"></div>
+            <div class="face side-1">
+                <div class="growing-bar"></div>
+            </div>
+        </div>
+    </div>
+    <p>Try another position :)</p>
+    <nav class="actions">
+        <label for="pos-0">1/4</label>
+        <label for="pos-1">2/4</label>
+        <label for="pos-2">3/4</label>
+        <label for="pos-3">Full</label>
+    </nav>
+</article>
+

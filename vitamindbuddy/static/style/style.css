@@ -1,0 +1,401 @@
+* {
+    font-family: 'Roboto', sans-serif;
+}
+
+/* input {
+    border-top-style: hidden;
+    border-right-style: hidden;
+    border-left-style: hidden;
+    border-bottom-style: none;
+    background-color:white;
+} */
+
+/* ---- HOME ---- */
+
+/* TODO */
+
+#home-page {
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    /* min-width: 1000px; */
+    min-height: 700px;
+    margin: 0;
+    padding: 0;
+    top: 0;
+    left: 0;
+    background: linear-gradient(180deg, #FFFFFF 55.58%, #FFE2BF 100%);
+    color: #FF8A00;
+}
+
+@media screen and (min-width: 0px) and (max-width: 400px) {
+    #home-page {
+        background: linear-gradient(180deg, #D6FFC8 22.32%, #E6FFFD 38.23%);
+        /* transform: matrix(1, 0, 0, -1, 0, 0); */
+    }
+}
+
+/* TODO: fix top positioning */
+#home-right-side-bckgrnd {
+    position: absolute;
+    /* width: 70%;
+    min-width: 588px; */
+    /* min-height: 660px;
+    height: 60vw; */
+    height: calc(700px - 5vw);
+    max-width: 588px;
+    min-height: 660px;
+    top: 0;
+    right: 0;
+    margin: 0;
+    padding: 0;
+}
+
+#orange-puffle-home {
+    position: absolute;
+    /* width: 299px; */
+    height: auto;
+    /* height: 291px; */
+    width: 35vw;
+    max-width: 299px;
+    top: 200px;
+    right: 65px;
+    z-index: 5;
+}
+
+/* .title-outline { */
+    /* color: white;
+    stroke: blue;
+    stroke-width: 3px;
+    text-shadow:
+    -5px -5px 0 #FF8A00; */
+    /* 5px -5px 0 #FF8A00,
+    -5px 5px 0 #FF8A00,
+    5px 5px 0 #FF8A00; */
+/* } */
+
+.title {
+    position: absolute;
+    width: 366px;
+    top: 143px;
+    left: 133px;
+    z-index: 10;
+
+    font-style: normal;
+    font-weight: bold;
+    font-size: 72px;
+
+    /* background-image: radial-gradient(white, rgba(255, 255, 255, 0.623)); */
+}
+
+#home-buttons {
+    position: absolute;
+    top: 389px;
+    left: 123px;
+    text-align: center;
+}
+
+.home-button {
+    display: block;
+    width: 190px;
+    margin: 10px;
+    padding: 5px 20px;
+    color: white;
+    background-color: #FF8A00;
+    border: 3px solid #FF8A00;
+    border-radius: 4px;
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.home-button:hover {
+    color: #FF8A00;
+    background-color: transparent;
+    text-decoration: none;
+}
+
+#play-as-guest {
+    margin: 20px;
+
+    font-weight: bold;
+    text-align: center;
+    color: #FF8A00;
+    
+    background-color: transparent;
+    border: none;
+}
+
+#play-as-guest:hover {
+    text-decoration: underline;
+}
+
+/* TODO */
+
+/* #home-page {
+    height: 100vh;
+    width: 100vh;
+
+    margin: 0;
+    padding: 0;
+    top: 0;
+    left: 0;
+
+    background: linear-gradient(180deg, #FFFFFF 55.58%, #FFE2BF 100%);
+    color: #FF8A00;
+}
+
+#home-right-side-bckgrnd {
+    height: 100vh;
+}
+
+#orange-puffle-home {
+    position: absolute;
+    height: auto;
+    width: 35vw;
+    max-width: 299px;
+    top: 200px;
+    right: 65px;
+    /* z-index: 5;  */
+} */
+
+
+/* ---- CREATE/LOGIN ACCOUNT ---- */
+.account-left {
+    color: #234257;
+}
+
+.account-title {
+    font-weight: bold;
+    font-size: 36px;
+    line-height: 42px;
+    text-align: center;
+}
+
+.orange-puffle-account {
+    position: absolute;
+    width: 258px;
+    height: 251px;
+    top: 370px;
+    left: 168px;
+    z-index: 5;
+}
+
+.account-right {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: absolute;
+    
+    top: 140px;
+    right: 133px;
+    height: 469px;
+    width: 367px;
+}
+
+.account-title {
+    color: #234257;
+    margin: 10px;
+}
+
+.account-inputs {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    /* height: 255px; */
+    width: 367px;
+    padding: 8px;
+    background: #CCD2D7;
+    border-radius: 8px;
+}
+
+.account-input {
+    height: 49px;
+    margin: 6px;
+    padding: 8px;
+    border-style: hidden;
+    border-radius: 8px;
+    color: #234257;
+    background-color:white;
+}
+
+.account-input:hover {
+    font-weight: bold;
+    color: #234257;
+}
+
+.account-btns{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    margin: 10px;
+}
+
+.account-back-btn {
+    color: #FF8A00
+}
+
+.account-back-btn:hover {
+    color: #FF8A00;
+    font-weight: bold;
+}
+
+
+/* ---- LOGIN ---- */
+
+#login-page {
+    display: flex;
+    position: absolute;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    
+    width: 100%;
+    height: 100%;
+    /* min-width: 1152px; */
+    min-height: 700px;
+
+    margin: 0;
+    padding: 0;
+    top: 0;
+    left: 0;
+
+    background: linear-gradient(180deg, #EEFFFE 55.58%, #D6FFC8 100%);
+}
+
+/* ---- CREATE ACCOUNT ---- */
+
+#create-account-page {
+    display: block;
+    position: absolute;
+
+    width: 100%;
+    height: 100%;
+    /* min-width: 1152px; */
+    min-height: 700px;
+    
+    margin: 0;
+    padding: 0;
+    top: 0;
+    left: 0;
+    
+    background: linear-gradient(180deg, #EEFFFE 55.58%, #D6FFC8 100%);
+    /* color: #234257;
+    font-weight: bold; */
+}
+
+#create-account-page .title-outline {
+    stroke: 2px blue;
+    fill: white;
+    color: #234257;
+}
+
+
+/* ---- HOW TO PLAY ---- */
+
+#tutorial-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    min-width: 1152px;
+    min-height: 700px;
+    margin: auto;
+    padding: 0;
+    top: 0;
+    left: 0;
+    background: linear-gradient(180deg, #EEFFFE 55.58%, #FFFFFF 100%);
+}
+
+#tutorial-header {
+    text-align: center;
+    font-size: 48px;
+    color: #234257;
+    font-weight:bold;
+}
+
+#tutorial-steps {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    text-align: center;
+    font-size: 40px;
+    font-weight: bold;
+    /* height: 300px; */
+    min-width: 1152px;
+    width: 100%;
+}
+
+.tutorial-col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 30%;
+    min-width: 384px;
+    color: #234257;
+    font-size: 36px;
+    /* margin: auto; */
+}
+
+.tutorial-col figcaption {
+    text-align: center;
+    height: 84px;
+    min-width: 252px;
+}
+
+.tutorial-col img {
+    height: 300px;
+}
+
+/* #tutorial-create-img {
+    max-width: 65%;
+    height: auto;
+}
+
+#tutorial-outside-img {
+    max-width: 65%;
+    height: auto;
+}
+
+#tutorial-points-img {
+    width: 57%;
+    height: auto;
+} */
+
+#tutorial-buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#tutorial-play-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 166px;
+    height: 52px;
+    margin: 8px;
+    background-color: #234257;
+    color: white;
+    font-size: 25px;
+    border-radius: 4px;
+    text-decoration: none;
+}
+
+#tutorial-go-back {
+    margin: 8px;
+    color: #234257;
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: underline;
+}
+
+
+

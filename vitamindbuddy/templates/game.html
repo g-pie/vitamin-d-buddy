@@ -1,0 +1,202 @@
+{% extends "base.html" %}
+
+{% block style %}
+<link rel="stylesheet" href="/static/style/game.css">
+{% endblock %}
+
+{% block content %}
+<div id="reactEntry">
+	<div id="game-loading">
+        <h1>Loading game...</h1>
+    </div>
+</div>
+
+<!-- <div id="buddy">
+    <img id="game-body" src="/static/src/puffle/orange_puffle.png" alt="Bud-D body">
+    <img id="game-eyes" src="/static/src/puffle/puffle_eyes.png" alt="Bud-D eyes">
+    {% if glasses is defined %}
+    <img class="game-accessory" src="/static/src/accessories/red_heart_sunglasses.png" alt="Bud-D accessory">
+    {% endif %}
+    {% if hat is defined %}
+    <img class="game-accessory" src="/static/src/accessories/cowboy_hat.png" alt="Bud-D accessory">
+    {% endif %}
+</div> -->
+<!-- Load JavaScript -->
+<script type="text/javascript" src="{{ url_for('static', filename='js/bundle.js') }}"></script>
+
+{% endblock %}
+
+
+<!-- TODO: make a tool tip/tour for first time players -->
+
+<!-- <div id="game-page">
+    <div id="game-background">
+        <div id="background-top">
+            <img src="/static/src/game/mountain_background.png" alt="mountain range" class="mountain">
+            <img src="/static/src/game/mountain_middleground.png" alt="mountain range" class="mountain">
+            <img src="/static/src/game/mountain_foreground.png" alt="mountain range" class="mountain">
+        </div>
+        <div id="background-bottom"></div>
+    </div>
+
+    <div id="buddy">
+        <img id="game-body" src="/static/src/puffle/purple_puffle.png" alt="Bud-D body"/>
+        <img id="game-eyes" src="/static/src/puffle/puffle_eyes.png" alt="Bud-D eyes"/>
+    </div>
+
+    <div id = "active_task_box">
+        <div id = "active_task_box_title">
+            Active
+        </div>
+
+        <div id = "active-task">
+            None
+        </div>
+
+    </div>
+
+    <div id="tasks_box">
+
+        <div id="tasks-title">Tasks List</div>
+
+        <div id="saved-section" class="task-section">
+            <div id="saved-title" class="task-section-title">Saved</div>
+        </div>
+        
+        <div id="suggested-section" class="task-section">
+            <div id="suggested-title" class="task-section-title">Suggested</div>
+            <div id="suggested-tasks" class="task-section">
+                {% for task in suggestedTasks %}
+                {% endfor %}
+                
+            </div>
+            {% for task in tasks %}
+            <div class="task">
+                <div class="task-name">{{ task.name }}</div>
+                <div class="task-info">
+                    <div class="task-point-val"><i>{{ task.pointVal }} pts</i></div>
+                    <div class="task-buttons">
+                        <a href=""> <div class="make_active_button task-button" ></div> </a>
+                        <a href=""> <div class="save_button task-button" href=""></div> </a>
+                        <a href=""> <div class="delete_button task-button" href=""></div> </a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+    </div>
+
+    <div id = "big_leaderboard_background">
+        <div id = "big_leaderboard_main">
+            LEADERBOARD
+            <div id = "big_leaderboard_user_position">
+                <div class = "leaderboard_position"> 8 </div>
+                <div class = "leaderboard_username"> username_filler </div>
+                <div class = "leaderboard_level"> 30 </div>
+                <div class = "leaderboard_score"> 29032 </div>
+            </div>
+            <div id = "big_leaderboard_all_users">
+            </div>
+        </div>
+    </div>
+
+    <div id="game-left-side">
+        <div id="game-left-content">
+            <div id="game-menu">
+                <a href="/" class="game-menu-btn">
+                    <img src="/static/src/menu-buttons/home.png" alt="home button">
+                </a>
+                <a href="" class="game-menu-btn">
+                    <img src="/static/src/menu-buttons/settings.png" alt="settings button">
+                </a>
+                <a href="" class="game-menu-btn">
+                    <img src="/static/src/menu-buttons/trophy.png" alt="leaderboard button">
+                </a>
+            </div>
+            <div id= "level-progress">
+
+                <div class="circular">
+                    <div class="inner"></div>
+                    <div class="number">75%</div>
+                    <div class="circle">
+                        <div class="bar left">
+                            <div class="progress"></div>
+                        </div>
+                        <div class="bar right">
+                            <div class="progress"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <span id="points_until_next_level_statement">
+                    <span id="points_until_next_level">
+                        364&nbsp
+                    </span>
+                    Points until Level&nbsp
+                    <span id="next_level">
+                        5
+                    </span>
+                </span>
+
+            </div>
+    
+            <div id="bars_box">
+                <div class="center_bars"> 
+                    <div id="vitamin_d_line">
+                        <div id="vitamin_d_title"> Vitamin D </div>
+                        <div id="vitamin_d_level"> 0/28 </div> 
+                    </div>
+    
+                    <div id="vitamin_d_outer">
+                        <div id="vitamin_d_inner"></div>
+                    </div>
+                </div>
+    
+                <div class = "center_bars">
+                    <div id = "tasks_completed_line">
+                        <div id = "tasks_completed_title"> Tasks Completed </div>
+                        <div id = "tasks_completed_level"> 0/5 </div> 
+                    </div>
+    
+                    <div id="tasks_completed_outer">
+                        <div id="tasks_completed_inner"></div>
+                    </div>
+                </div>
+            </div>
+    
+            <div id="leaderboard_short">
+                <div id = "leaderboard_top_line">
+                    <div id = "leaderboard_word"> Leaderboard </div>
+                    <div id = "leaderboard_user_position"> 8th </div>
+                </div>
+
+                <div>
+
+                    <span class="leaderboard_2nd_line">
+                        <span class="leaderboard-row">
+                            8th (You)
+                        </span>
+                        <div id = "player_points">
+                            144 points
+                        </div>
+                    </span>
+
+                    <hr>
+    
+                    <div class= "leaderboard_2nd_line">
+                        <span class="leaderboard-row">
+                            1st maizey
+                        </span>
+                        <div id = "first_place_player_points">
+                            1648 points
+                        </div>
+                    </div>
+
+                <div>
+
+            </div>
+        </div>
+    </div>
+</div> -->
+

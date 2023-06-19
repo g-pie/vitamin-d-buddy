@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block style %}
+<link rel="stylesheet" href="/static/style/style.css">
+{% endblock %}
+
+{% block content %}
+
+<div id="home-page">
+    <div>
+        <img id="orange-puffle-home" src="/static/src/puffle_logo.png" alt="orange puffle"/>
+        <!-- <svg id="home-right-side" width="588" height="660" viewBox="0 0 588 660" fill="none" xmlns="http://www.w3.org/2000/svg"> -->
+        <svg id="home-right-side-bckgrnd" viewBox="0 0 588 660" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M2.32343 480.98C-15.9342 549.12 77.8898 585.875 127.084 595.735C133.628 601.318 161.234 609.133 219.312 595.735C291.91 578.987 298.371 562.239 337.14 578.987C375.91 595.735 359.946 660 412.018 660C464.09 660 481.955 652.989 516.163 615.988C526.425 598.981 549.459 565.9 559.493 569.639C569.528 573.378 582.679 547.309 588 533.807L587.64 0.5H249.582C227.396 3.73358 218 5 185.5 11.5C146 19.4 97.4154 51.542 88.6669 68.6483C79.9184 85.7545 33.894 111.058 154.09 196.232C250.247 264.372 194.156 322.272 154.09 342.705C111.109 360.405 20.5811 412.84 2.32343 480.98Z" fill="url(#paint0_linear_41_770)"/>
+            <defs>
+            <linearGradient id="paint0_linear_41_770" x1="294" y1="660" x2="294" y2="0.5" gradientUnits="userSpaceOnUse">
+                <stop offset="0.22322" stop-color="#D6FFC8"/>
+                <stop offset="0.382254" stop-color="#EEFFFE"/>
+            </linearGradient>
+            </defs>
+        </svg>
+    </div>
+    <div id="home-left-side">
+        <div class="title">
+            <div>Vitamin-<span class="title-outline">D</span></div>
+            <div>Bud-<span class="title-outline">D</span></div>
+        </div>
+        <div id="home-buttons">
+            {% if loggedIn %}
+                <a href="/game/" id="play-btn" class="home-button">Play</a>
+                <form action="{{ url_for('logout') }}" method="post" enctype="multipart/form-data">
+                    <input class="home-button" type="submit" name="logout" value="Logout"/>
+                </form>
+                <!-- <a href="{{ url_for('logout') }}" class="home-button">Logout</a> -->
+            {% else %}
+                <a href="/accounts/login" id="login-btn" class="home-button">Login</a>
+                <a href="/accounts/signup" id="sign-up-btn" class="home-button">Sign Up</a>
+                <form action="/accounts/?target={{ url_for('tutorial') }}" method="post" enctype="multipart/form-data">
+                    <input type="hidden" name="operation" value="guest"/>
+                    <input id="play-as-guest" type="submit" name="logout" value="Play as Guest"/>
+                </form>
+                <!-- <div id="play-as-guest"><a href="/tutorial/">Play as Guest</a></div> -->
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+{% endblock %}

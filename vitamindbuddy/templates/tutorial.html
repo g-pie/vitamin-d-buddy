@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block style %}
+<link rel="stylesheet" href="/static/style/style.css">
+{% endblock %}
+
+{% block content %}
+
+<div id="tutorial-page">
+    <span id="tutorial-header">How to Play</span>
+    <span id="tutorial-steps">
+        <div class="tutorial-col">
+            <figure>
+                <img id="tutorial-create-img" class="tutorial-col-img" src="/static/src/purple_puffle.png" alt="purple puffle"/> </br>
+                <figcaption>Create your Bud-D</figcaption>
+            </figure>
+        </div>
+        <div class="tutorial-col">
+            <figure>
+                <img id="tutorial-outside-img" class="tutorial-col-img" src="/static/src/puffle_logo.png" alt="outdoor activites"/> </br>
+                <figcaption>Go outside and complete tasks</figcaption>
+            </figure>
+        </div>
+        <div id="tutorial-points" class="tutorial-col">
+            <figure>
+                <img id="tutorial-points-img" class="tutorial-col-img" src="/static/src/Star.png" alt="level up star"/> </br>
+                <figcaption>Earn points and level up</figcaption>
+            </figure>
+        </div>
+    </span>
+
+    <div id="tutorial-buttons">
+        <a href="/customize/" id="tutorial-play-button">Play</a>
+        <a href="/" id="tutorial-go-back">Go back</a>
+    </div>
+
+</div>
+
+{% endblock %}
